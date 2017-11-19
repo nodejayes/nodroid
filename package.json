@@ -1,0 +1,15 @@
+{
+  "name": "nodroid",
+  "description": "create a Projecttemplate for a NodeJs Project using VS Code and yarn",
+  "version": "1.0.1",
+  "main": "index.js",
+  "author": "Markus Gilg",
+  "license": "MIT",
+  "bin": {
+    "nodroid": "index.js"
+  },
+  "dependencies": {
+    "rimraf": "^2.6.2"
+  },
+  "repository": "https://github.com/nodejayes/nodroid.git"
+}
