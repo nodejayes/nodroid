@@ -1,3 +1,5 @@
+#!/bin/bash node
+
 const {mkdirSync, writeFileSync} = require('fs');
 const {join} = require('path');
 const {spawn, spawnSync} = require('child_process');
