@@ -3,6 +3,7 @@ const {join} = require('path');
 const {spawn, spawnSync} = require('child_process');
 const clean = require('rimraf');
 const readline = require('readline');
+const packageJson = require('./package.json');
 
 let rl = readline.createInterface({
     input: process.stdin,
@@ -221,6 +222,18 @@ src/**
     updatePackageJson();
 }
 
-run()
-.then(process.exit)
-.catch(console.error);
+if (process.argv[1] === 'init') {
+    run()
+    .then(process.exit)
+    .catch(console.error);
+} else {
+    console.info(`
+Node Droid v${packageJson.version}
+
+#### HELP
+
+nodroid [command]
+    nodroid init -- init a new Node Droid Project
+    `);
+    process.exit(0);
+}
