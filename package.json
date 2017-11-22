@@ -1,7 +1,7 @@
 {
   "name": "nodroid",
   "description": "create a Projecttemplate for a NodeJs Project using VS Code and yarn",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "main": "index.js",
   "author": "Markus Gilg",
   "license": "MIT",
@@ -9,7 +9,9 @@
     "nodroid": "index.js"
   },
   "dependencies": {
-    "rimraf": "^2.6.2"
+    "lodash": "^4.17.4",
+    "rimraf": "^2.6.2",
+    "validator": "^9.1.1"
   },
   "repository": "https://github.com/nodejayes/nodroid.git"
 }
