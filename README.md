@@ -33,6 +33,8 @@ yarn global add nodroid
 
 ## Usage
 
+### How to create a new project:
+
 ```bash
 nodroid init
 
@@ -41,6 +43,16 @@ Author?:{input the name of the Author}
 Authors Email?:{input Email of the Author}
 License?:{input License Type}
 ```
+
+An attempt is made to create a new folder with the project name. If the folder already exists, it is possible to delete the contents. This should not be done if you have e. g. cloned an empty GIT project, because then the settings of GIT will be deleted!
+
+### How to create an alias
+
+```bash
+nodroid resolve myfolder src/somefolder
+```
+
+If a project is created, the alias "~" is already created for the src directory. Any other aliases can be added, but they may only be assigned once! These are entered in the VS Code setting for the Path Autocomplete plugin, in the jsconfig. json for the VS Code Intellisense and in the. babelrc for Babel.
 
 ## Folder Structure
 
@@ -63,21 +75,27 @@ License?:{input License Type}
 | build  | build the Code for Release usage     |
 | docs   | generate the Documentation           |
 
+## Debug Launcher
+
+Two processes are entered in the VS Code Launch setting. Once "Launch Program" to start the index. js from the src directory and "Tests" to start the tests from the spec directory.
+
 ## under the Hood
 
 | Package               | Using for...                                           |
 |-----------------------|--------------------------------------------------------|
-| babel-cli             | use Babel Commands for Transpiling                     |
-| babel-plugin-istanbul | used for generation of Coverage                        |
-| babel-preset-es2015   | transpiling Rules to ES2015                            |
-| babel-preset-stage-2  | transpiling Rules for newest ES Features               |
-| babel-register        | helps to transpile Code for Testing                    |
-| chai                  | assert Testing Tool                                    |
-| mocha                 | Test Runner                                            |
-| sinon                 | Mocking Tool                                           |
-| nyc                   | Coverage Reporter                                      |
-| esdoc                 | Documentation Generator for ES2017                     |
-| esdoc-standard-plugin | the Default Pugin for esdoc                            |
-| eslint                | check Javascript Code for Errors                       |
-| eslint-config-google  | eslint Google Ruleset                                  |
-| nodemon               | used to restart Processes when Source Code has changed |
+| babel-cli                      | use Babel Commands for Transpiling            |
+| babel-plugin-istanbul          | used for generation of Coverage               |
+| babel-plugin-module-resolver   | create aliases for folders                    |
+| babel-plugin-transform-runtime | transpile async and await                     |
+| babel-preset-env               | latest transpiling Rules                      |
+| babel-preset-stage-2           | transpiling Rules for newest ES Features      |
+| babel-register                 | helps to transpile Code for Testing           |
+| chai                           | assert Testing Tool                           |
+| mocha                          | Test Runner                                   |
+| sinon                          | Mocking Tool                                  |
+| nyc                            | Coverage Reporter                             |
+| esdoc                          | Documentation Generator for ES2017            |
+| esdoc-standard-plugin          | the Default Pugin for esdoc                   |
+| eslint                         | check Javascript Code for Errors              |
+| eslint-config-google           | eslint Google Ruleset                         |
+| nodemon                        | used to automat restart Processes             |
