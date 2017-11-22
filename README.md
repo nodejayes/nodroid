@@ -15,7 +15,7 @@ First of all we have to Download and Install VSCode from [here](https://code.vis
 | Coverage Gutters                         | Show Code Coverage on the Fly                               |
 | Document This                            | Fast and Easy Documentation Generation                      |
 | npm && npm intellisense                  | enables Intellisense in package.json                        |
-| Path Intellisense                        | Intellisense for Paths                                      |
+| Path Autocomplete                        | Intellisense for Paths                                      |
 | Project Manager                          | working with multiple Projects                              |
 | GIT Lens                                 | brings GIT Informations in the Code                         |
 | GraphQl for VSCode                       | brings GraphQl Syntax Highliting and Intellisense to VSCode |
