@@ -7,6 +7,8 @@ const clean = require('rimraf');
 const readline = require('readline');
 const packageJson = require('./package.json');
 const _ = require('lodash');
+const vali = require('validator');
+const VALID_LICENSE = readJsonFile(join(__dirname, 'license.json'));
 
 let rl = readline.createInterface({
     input: process.stdin,
@@ -51,10 +53,13 @@ function writeFolders() {
 }
 
 async function createFolders(project) {
-    clear = await query(`${root} already exists overwrite? (j/N):`);
+    root = join(process.cwd(), project);
+    let existsRoot = existsSync(root);
+    if (existsRoot) {
+        clear = await query(`${root} already exists overwrite? (j/N):`);
+    }
     return new Promise((resolve, reject) => {
-        root = join(process.cwd(), project);
-        if (existsSync(root)) {
+        if (existsRoot) {
             if (clear.toLowerCase() === 'j') {
                 clean(root, () => {
                     mkdirSync(root);
@@ -155,13 +160,27 @@ function updatePackageJson() {
 }
 
 async function run() {
-    projectName = await query('Name of your Project?:');
-    authorName = await query('Author?:');
-    authorEmail = await query('Authors Email?:');
-    lic = await query('License?:');
-    if (typeof projectName !== 'string' || projectName.length < 1) {
-        throw Error(`invalid project name ${projectName}`);
+    projectName = await query('Name of your Project:');
+    while (!_.isString(projectName) || projectName.length < 1) {
+        console.info(`invalid project name ${projectName}`);
+        projectName = await query('Name of your Project:');
     }
+    authorName = await query('Author:');
+    while (!_.isString(authorName)) {
+        console.info(`invalid author name ${authorName}`);
+        authorName = await query('Author:');
+    }
+    authorEmail = await query('Authors Email:');
+    while (!vali.isEmail(authorEmail)) {
+        console.info(`invalid author email ${authorEmail}`);
+        authorEmail = await query('Authors Email:');
+    }
+    lic = await query('License:');
+    while (!_.isString(lic) || lic.length < 1 || VALID_LICENSE.indexOf(lic) === -1) {
+        console.info(`invalid license ${lic}`);
+        lic = await query('License:');
+    }
+
     console.info(`create Project ${projectName}`);
 
     const BABELRC_SETTINGS = `
