@@ -1,7 +1,7 @@
 {
   "name": "nodroid",
   "description": "create a Projecttemplate for a NodeJs Project using VS Code and yarn",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "main": "index.js",
   "author": "Markus Gilg",
   "license": "MIT",
