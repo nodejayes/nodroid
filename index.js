@@ -148,7 +148,7 @@ function updatePackageJson() {
     p.license = lic;
     p.scripts = {
         start: 'babel-node ./src/index.js',
-        test: 'NODE_ENV=test babel-node ./node_modules/.bin/nyc ./node_modules/.bin/mocha -R tap --recursive ./spec/',
+        test: 'NODE_ENV=test babel-node ./node_modules/nyc/bin/nyc.js ./node_modules/mocha/bin/mocha -R tap --recursive ./spec/',
         build: 'babel ./src -d ./dist',
         docs: 'esdoc'
     };
