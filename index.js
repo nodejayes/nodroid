@@ -125,7 +125,7 @@ function yarnInstall() {
         let yarn = spawn('yarn', [
             'add', '--dev', 'babel-cli', 'babel-plugin-istanbul', 'babel-preset-env', 'babel-preset-stage-2', 'babel-plugin-module-resolver',
             'babel-register', 'babel-plugin-transform-runtime', 'chai', 'esdoc', 'esdoc-standard-plugin', 'eslint', 'eslint-config-google', 'mocha',
-            'nodemon', 'nyc', 'sinon'
+            'nodemon', 'nyc', 'sinon', 'babel-plugin-add-module-exports'
         ], {
             cwd: root
         });
@@ -195,6 +195,7 @@ async function run() {
     ],
     "plugins": [
         "istanbul",
+        "add-module-exports",
         "transform-runtime",
         [
             "module-resolver",
